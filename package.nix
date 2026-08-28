@@ -29,6 +29,9 @@
         lsp-java
         direnv
         go-mode
+        nerd-icons
+        nerd-icons-dired
+        nerd-icons-completion
       ]
   );
 in {

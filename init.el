@@ -86,6 +86,18 @@
   :defer t
   :hook (after-init . gcmh-mode))
 
+(use-package nerd-icons
+	:ensure nil)
+
+(use-package nerd-icons-completion
+	:ensure nil
+	:defer t
+	:after global-company-mode)
+
+(use-package nerd-icons-dired
+	:ensure nil
+	:defer t
+	:hook (dired-mode . nerd-icons-dired-mode))
 
 (use-package meow-config
   :load-path "lisp/")
