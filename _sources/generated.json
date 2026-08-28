@@ -1,0 +1,30 @@
+{
+    "emacs-overlay": {
+        "cargoLock": null,
+        "date": "2026-08-28",
+        "extract": null,
+        "name": "emacs-overlay",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "sha256": "sha256-y9Ff62SXccO34iqDcy1+Fj0UvkIq7H8o4zbeQo/hXPE=",
+            "type": "tarball",
+            "url": "https://github.com/nix-community/emacs-overlay/archive/5b8f060a63e9edc248eee5a258f5abcd2f128caa.tar.gz"
+        },
+        "version": "5b8f060a63e9edc248eee5a258f5abcd2f128caa"
+    },
+    "nixpkgs": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "nixpkgs",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "sha256": "sha256-IkjmqLoWzeqBAi1VIkdhDLMGjQDJ4suEDp59Zwxpswg=",
+            "type": "tarball",
+            "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1062397.9fbb54b33e91/nixexprs.tar.zst"
+        },
+        "version": "26.11pre1062397.9fbb54b33e91"
+    }
+}
