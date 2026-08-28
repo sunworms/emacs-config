@@ -21,6 +21,12 @@
   (setq rustic-format-on-save t
         rustic-compile-command "cargo check"))
 
+;; Java
+(use-package eglot-java
+  :ensure nil
+  :defer t
+  :hook (java-mode . eglot-java-mode))
+
 ;; PDF Tools
 (use-package pdf-tools
   :ensure nil
@@ -38,7 +44,9 @@
   :config
   (add-hook 'go-mode-hook
             (lambda ()
-              (add-hook 'before-save-hook #'lsp-organize-imports nil t))))
+              (add-hook 'before-save-hook
+                        (lambda () (call-interactively 'eglot-code-action-organize-imports))
+                        nil t))))
 
 ;; LaTeX / AUCTeX
 (use-package auctex

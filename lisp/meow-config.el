@@ -88,6 +88,7 @@
      '("'" . repeat)
      '("<escape>" . ignore)))
   (meow-setup)
+	(setq meow-use-clipboard t)
   (meow-global-mode 1))
 
 (provide 'meow-config)

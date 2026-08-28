@@ -15,6 +15,8 @@
         company
         company-auctex
         company-bibtex
+        eglot
+        eglot-java
         nix-ts-mode
         pdf-tools
         auctex
@@ -24,9 +26,6 @@
         typst-ts-mode
         typst-preview
         rustic
-        lsp-mode
-        lsp-ui
-        lsp-java
         direnv
         go-mode
         nerd-icons
