@@ -7,7 +7,17 @@
  select-enable-clipboard t
  delete-old-versions t
  version-control t
- create-lockfiles nil)
+ create-lockfiles nil
+ treesit-font-lock-level 4
+ org-agenda-files '("~/Documents/gdrive/org/todo.org"
+										"~/Documents/gdrive/org/inbox.org"
+										"~/Documents/gdrive/org/journal"
+										"~/Documents/gdrive/org/projects")
+ org-directory "~/Documents/gdrive/org"
+ org-todo-keywords '((sequence
+											"TODO(t)"
+											"|"
+											"DONE(d)")))
 
 ;; General toggles
 (setq-default tab-width 2)
@@ -66,35 +76,16 @@
   (find-file
    (format-time-string "~/Documents/gdrive/org/journal/%Y-%m-%d.org")))
 
-(setq org-todo-keywords
-      '((sequence
-         "TODO(t)"
-				 "IN PROGRESS(i)"
-         "|"
-         "DONE(d)")))
-
-(setq org-directory "~/Documents/gdrive/org")
-
-(setq org-agenda-files
-      '("~/Documents/gdrive/org/todo.org"
-        "~/Documents/gdrive/org/inbox.org"
-        "~/Documents/gdrive/org/journal"
-        "~/Documents/gdrive/org/projects"))
-
 (use-package magit
   :ensure nil
   :defer t
   :bind ("C-x g" . magit-status))
 
-;; Lets the GC threshold stay huge during startup (see early-init.el) but
-;; drop back down to something sane once Emacs is idle, instead of paying
-;; for giant GC pauses during normal editing.
 (use-package gcmh
   :ensure nil
   :defer t
   :hook (after-init . gcmh-mode))
 
-(setq treesit-font-lock-level 4)
 
 (use-package meow-config
   :load-path "lisp/")
