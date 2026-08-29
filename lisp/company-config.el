@@ -16,8 +16,7 @@
         company-selection-wrap-around t)
   
   (setq company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
-                            company-preview-if-just-one-frontend
-                            company-echo-metadata-frontend))
+                            company-preview-if-just-one-frontend))
 
   (add-to-list 'company-backends 'company-capf))
 

@@ -18,11 +18,7 @@
 					:documentRangeFormattingProvider
 					:textDocumentSync))
 
-  (add-to-list 'eglot-server-programs '(nix-ts-mode . ("rass"
-																											 "--"
-																											 "nixd"
-																											 "--"
-																											 "nil" "--stdio")))
+  (add-to-list 'eglot-server-programs '(nix-ts-mode . ("rass" "--" "nil" "--" "nixd")))
   (add-to-list 'eglot-server-programs '(typst-ts-mode . ("tinymist")))
   (add-to-list 'eglot-server-programs
                '((LaTeX-mode latex-mode tex-mode bibtex-mode yatex-mode) . ("texlab")))
