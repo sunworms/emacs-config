@@ -1,17 +1,17 @@
 {
     "emacs-overlay": {
         "cargoLock": null,
-        "date": "2026-08-28",
+        "date": "2026-08-29",
         "extract": null,
         "name": "emacs-overlay",
         "passthru": null,
         "pinned": false,
         "src": {
-            "sha256": "sha256-y9Ff62SXccO34iqDcy1+Fj0UvkIq7H8o4zbeQo/hXPE=",
+            "sha256": "sha256-HlZp8BnRkHxx7p7fcCeW67/VYzjJAzyFRmrvZqiISEU=",
             "type": "tarball",
-            "url": "https://github.com/nix-community/emacs-overlay/archive/5b8f060a63e9edc248eee5a258f5abcd2f128caa.tar.gz"
+            "url": "https://github.com/nix-community/emacs-overlay/archive/0f8471b870c51c3ed6dcd09c01e88bb0f790da01.tar.gz"
         },
-        "version": "5b8f060a63e9edc248eee5a258f5abcd2f128caa"
+        "version": "0f8471b870c51c3ed6dcd09c01e88bb0f790da01"
     },
     "nixpkgs": {
         "cargoLock": null,

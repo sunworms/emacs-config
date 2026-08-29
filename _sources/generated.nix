@@ -8,12 +8,12 @@
 {
   emacs-overlay = {
     pname = "emacs-overlay";
-    version = "5b8f060a63e9edc248eee5a258f5abcd2f128caa";
+    version = "0f8471b870c51c3ed6dcd09c01e88bb0f790da01";
     src = fetchTarball {
-      url = "https://github.com/nix-community/emacs-overlay/archive/5b8f060a63e9edc248eee5a258f5abcd2f128caa.tar.gz";
-      sha256 = "sha256-y9Ff62SXccO34iqDcy1+Fj0UvkIq7H8o4zbeQo/hXPE=";
+      url = "https://github.com/nix-community/emacs-overlay/archive/0f8471b870c51c3ed6dcd09c01e88bb0f790da01.tar.gz";
+      sha256 = "sha256-HlZp8BnRkHxx7p7fcCeW67/VYzjJAzyFRmrvZqiISEU=";
     };
-    date = "2026-08-28";
+    date = "2026-08-29";
   };
   nixpkgs = {
     pname = "nixpkgs";
