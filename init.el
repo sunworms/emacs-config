@@ -78,11 +78,6 @@
 
 (define-key special-event-map [sigusr1] #'handle-sigusr1-theme-reload)
 
-(use-package magit
-  :ensure nil
-  :defer t
-  :bind ("C-x g" . magit-status))
-
 (use-package gcmh
   :ensure nil
   :defer t

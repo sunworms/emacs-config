@@ -8,7 +8,6 @@
       with epkgs; [
         treesitGrammars
         tree-sitter
-        magit
         gcmh
         apheleia
         company
