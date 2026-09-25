@@ -9,14 +9,12 @@
                 systemctl nil t nil
                 "--user" "show-environment"))
           (goto-char (point-min))
-          (when-let* ((value
-                       (and (re-search-forward
-                             (concat "^"
-                                     (regexp-quote variable)
-                                     "=\\(.*\\)$")
-                             nil t)
-                            (match-string 1))))
-            value))))))
+          (when (re-search-forward
+                 (concat "^"
+                         (regexp-quote variable)
+                         "=\\(.*\\)$")
+                 nil t)
+            (match-string 1)))))))
 
 (defun sunny--wayland-environment ()
   (let* ((display
@@ -28,40 +26,41 @@
           (and display
                runtime
                (expand-file-name display runtime))))
-    (when-let* ((wayland
-                 (and display
-											runtime
-											(file-exists-p socket)))
-								(_ wayland))
+    (when (and display
+               runtime
+               (file-exists-p socket))
       (list display runtime))))
 
 (setq interprogram-cut-function
-      (lambda (text &optional _push)
-        (when-let* ((wayland (sunny--wayland-environment)))
-          (let ((process-environment (copy-sequence process-environment)))
-            (setenv "WAYLAND_DISPLAY" (nth 0 wayland))
-            (setenv "XDG_RUNTIME_DIR" (nth 1 wayland))
-            (let ((proc
-                   (make-process
-                    :name "wl-copy"
-                    :command '("wl-copy" "-n")
-                    :connection-type 'pipe
-                    :noquery t)))
-              (process-send-string proc text)
-              (process-send-eof proc))))))
+      (lambda (text)
+        (let ((wayland (sunny--wayland-environment)))
+          (when wayland
+            (let ((process-environment (copy-sequence process-environment)))
+              (setenv "WAYLAND_DISPLAY" (nth 0 wayland))
+              (setenv "XDG_RUNTIME_DIR" (nth 1 wayland))
+              (let ((proc
+                     (make-process
+                      :name "wl-copy"
+                      :command
+                      '("wl-copy" "-n")
+                      :connection-type 'pipe
+                      :noquery t)))
+                (process-send-string proc text)
+                (process-send-eof proc)))))))
 
 (setq interprogram-paste-function
       (lambda ()
-        (when-let* ((wayland (sunny--wayland-environment)))
-          (let ((process-environment (copy-sequence process-environment)))
-            (setenv "WAYLAND_DISPLAY" (nth 0 wayland))
-            (setenv "XDG_RUNTIME_DIR" (nth 1 wayland))
-            (with-temp-buffer
-              (when (zerop
-                     (call-process
-                      "wl-paste" nil t nil "-n"))
-                (let ((output (buffer-string)))
-                  (unless (string-empty-p output)
-                    output))))))))
+        (let ((wayland (sunny--wayland-environment)))
+          (when wayland
+            (let ((process-environment (copy-sequence process-environment)))
+              (setenv "WAYLAND_DISPLAY" (nth 0 wayland))
+              (setenv "XDG_RUNTIME_DIR" (nth 1 wayland))
+              (with-temp-buffer
+                (when (zerop
+                       (call-process
+                        "wl-paste" nil t nil "-n"))
+                  (let ((output (buffer-string)))
+                    (unless (string-empty-p output)
+                      output)))))))))
 
 (provide 'clipboard)
