@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
+{pkgs, ...}: let
   emacsPackagesCustom = pkgs.emacs-unstable-pgtk.pkgs;
 
   treesitGrammars = emacsPackagesCustom.treesit-grammars.with-all-grammars;
@@ -10,10 +6,7 @@
   emacs-with-packages = emacsPackagesCustom.withPackages (
     epkgs:
       with epkgs; [
-        (pkgs.callPackage ./everforest.nix {
-          inherit (epkgs) melpaBuild;
-          inherit inputs;
-        })
+        catppuccin-theme
         treesitGrammars
         tree-sitter
         gcmh

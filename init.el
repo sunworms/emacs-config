@@ -56,14 +56,14 @@
 (add-hook 'after-init-hook #'column-number-mode)
 
 ;; Themes
-(use-package everforest
+(use-package catppuccin-theme
   :ensure nil
   :no-require t
   :init
   (add-to-list 'custom-theme-load-path
-               (file-name-directory (locate-library "everforest-hard-dark-theme")))
+               (file-name-directory (locate-library "catppuccin-theme")))
   :config
-  (load-theme 'everforest-hard-dark t))
+  (load-theme 'catppuccin :no-confirm))
 
 (use-package gcmh
   :ensure nil
