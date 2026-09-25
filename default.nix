@@ -32,7 +32,7 @@ let
 in
   pkgs.symlinkJoin {
     name = "emacs-portable";
-    paths = [emacs-with-packages];
+    paths = [emacs-with-packages pkgs.rassumfrassum];
     nativeBuildInputs = [pkgs.makeWrapper];
     postBuild = ''
       wrapProgram $out/bin/emacs \
