@@ -66,9 +66,9 @@
     (set-face-attribute 'line-number-current-line
                         frame :background "unspecified-bg")))
 
-(defun sunny/server-setup-frame (frame)
+(defun sunny/server-setup-frame ()
   (catppuccin-reload)
-  (sunny/terminal-transparent frame))
+  (sunny/terminal-transparent (selected-frame)))
 
 (add-hook 'server-after-make-frame-hook #'sunny/server-setup-frame)
 
