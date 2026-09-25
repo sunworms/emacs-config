@@ -8,15 +8,6 @@
  version-control t
  create-lockfiles nil
  treesit-font-lock-level 4
- org-agenda-files '("~/Documents/gdrive/org/todo.org"
-										"~/Documents/gdrive/org/inbox.org"
-										"~/Documents/gdrive/org/journal"
-										"~/Documents/gdrive/org/projects")
- org-directory "~/Documents/gdrive/org"
- org-todo-keywords '((sequence
-											"TODO(t)"
-											"|"
-											"DONE(d)")))
 
 ;; Make clipboard synonymous with wl-clipboard
 (unless (getenv "WAYLAND_DISPLAY")
@@ -84,15 +75,6 @@
   (message "Noctalia theme reloaded"))
 
 (define-key special-event-map [sigusr1] #'handle-sigusr1-theme-reload)
-
-(defun my/open-todo ()
-  (interactive)
-  (find-file "~/Documents/gdrive/org/todo.org"))
-
-(defun my/open-journal ()
-  (interactive)
-  (find-file
-   (format-time-string "~/Documents/gdrive/org/journal/%Y-%m-%d.org")))
 
 (use-package magit
   :ensure nil
