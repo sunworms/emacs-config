@@ -7,7 +7,9 @@
  delete-old-versions t
  version-control t
  create-lockfiles nil
- treesit-font-lock-level 4
+ treesit-font-lock-level 4)
+
+(setq-default major-mode 'prog-mode)
 
 ;; Make clipboard synonymous with wl-clipboard
 (unless (getenv "WAYLAND_DISPLAY")
