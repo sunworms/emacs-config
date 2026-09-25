@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  emacsPackagesCustom = pkgs.emacs-unstable-pgtk.pkgs;
+  emacsPackagesCustom = pkgs.emacs-gtk.pkgs;
 
   treesitGrammars = emacsPackagesCustom.treesit-grammars.with-all-grammars;
 
