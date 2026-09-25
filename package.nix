@@ -15,6 +15,7 @@
         company-auctex
         company-bibtex
         eglot
+        eglotx
         eglot-java
         nix-ts-mode
         pdf-tools
