@@ -8,19 +8,20 @@
 {
   emacs-overlay = {
     pname = "emacs-overlay";
-    version = "0f8471b870c51c3ed6dcd09c01e88bb0f790da01";
+    version = "4b849481911296c843cf1e958dc0c99bfa112bf0";
     src = fetchTarball {
-      url = "https://github.com/nix-community/emacs-overlay/archive/0f8471b870c51c3ed6dcd09c01e88bb0f790da01.tar.gz";
-      sha256 = "sha256-HlZp8BnRkHxx7p7fcCeW67/VYzjJAzyFRmrvZqiISEU=";
+      url = "https://github.com/nix-community/emacs-overlay/archive/4b849481911296c843cf1e958dc0c99bfa112bf0.tar.gz";
+      sha256 = "sha256-kwF+AEtqMdvxjDe3mmXcgto8078KxBPfw3zgs7rYaRY=";
     };
-    date = "2026-08-29";
+    date = "2026-09-25";
   };
   nixpkgs = {
     pname = "nixpkgs";
-    version = "26.11pre1062397.9fbb54b33e91";
+    version = "4975466d324710c576dc11ad614684e6bd8cad8e";
     src = fetchTarball {
-      url = "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1062397.9fbb54b33e91/nixexprs.tar.zst";
-      sha256 = "sha256-IkjmqLoWzeqBAi1VIkdhDLMGjQDJ4suEDp59Zwxpswg=";
+      url = "https://github.com/NixOS/nixpkgs/archive/4975466d324710c576dc11ad614684e6bd8cad8e.tar.gz";
+      sha256 = "sha256-xJ+X4hBtOcAFGBOe5nAMyMUeF9foJBmIOu3NjBqBycU=";
     };
+    date = "2026-09-23";
   };
 }
