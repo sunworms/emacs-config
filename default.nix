@@ -42,4 +42,5 @@ in
       wrapProgram $out/bin/emacs \
         --add-flags "--init-directory=${compiledConfig}"
     '';
+    meta.mainProgram = "emacs";
   }
