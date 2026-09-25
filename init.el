@@ -101,6 +101,12 @@
 	:defer t
 	:hook (dired-mode . nerd-icons-dired-mode))
 
+(use-package tree-sitter
+  :ensure nil
+  :config
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
 (use-package direnv-config
   :load-path "lisp/")
 (use-package company-config
