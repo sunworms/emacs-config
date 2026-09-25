@@ -56,14 +56,11 @@
 (add-hook 'after-init-hook #'column-number-mode)
 
 ;; Themes
-(use-package catppuccin-theme
-  :ensure nil
-  :no-require t
-  :init
-  (add-to-list 'custom-theme-load-path
-               (file-name-directory (locate-library "catppuccin-theme")))
-  :config
-  (load-theme 'catppuccin :no-confirm))
+;; Theme
+(require 'catppuccin-theme)
+(load-theme 'catppuccin :no-confirm)
+
+(add-hook 'server-after-make-frame-hook #'catppuccin-reload)
 
 (use-package gcmh
   :ensure nil
