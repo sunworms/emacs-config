@@ -101,11 +101,7 @@
 	:defer t
 	:hook (dired-mode . nerd-icons-dired-mode))
 
-(use-package meow-config
-  :load-path "lisp/")
 (use-package direnv-config
-  :load-path "lisp/")
-(use-package treesitter-config
   :load-path "lisp/")
 (use-package company-config
   :load-path "lisp/")

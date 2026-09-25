@@ -7,9 +7,7 @@
     epkgs:
       with epkgs; [
         treesitGrammars
-        treesit-auto
         magit
-        meow
         gcmh
         apheleia
         company
