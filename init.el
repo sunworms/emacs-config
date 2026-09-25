@@ -40,10 +40,6 @@
 (setq browse-url-browser-function 'browse-url-xdg-open)
 (set-face-attribute 'default nil :family "D2KodingLigature Nerd Font Mono" :height 110)
 
-(unless (display-graphic-p)
-  (set-face-attribute 'default nil :background 'unspecified)
-  (set-terminal-parameter nil 'background-mode 'dark))
-
 (set-frame-parameter nil 'alpha-background 85) ; For current frame
 (add-to-list 'default-frame-alist '(alpha-background . 85)) ; For all new frames henceforth
 
@@ -56,11 +52,24 @@
 (add-hook 'after-init-hook #'column-number-mode)
 
 ;; Themes
-;; Theme
 (require 'catppuccin-theme)
 (load-theme 'catppuccin :no-confirm)
 
 (add-hook 'server-after-make-frame-hook #'catppuccin-reload)
+
+(defun sunny/terminal-transparent (frame)
+  (unless (display-graphic-p frame)
+    (set-face-background 'default "unspecified-bg" frame)
+		(set-face-attribute 'line-number frame :background "unspecified-bg")
+    (set-face-attribute 'line-number-current-line
+                        frame :background "unspecified-bg")))
+
+(unless (daemonp)
+  (add-hook 'window-setup-hook
+            (lambda ()
+              (sunny/terminal-transparent (selected-frame)))))
+
+(add-hook 'after-make-frame-functions #'sunny/terminal-transparent)
 
 (use-package gcmh
   :ensure nil
