@@ -6,3 +6,7 @@ fetch.tarball = "https://github.com/NixOS/nixpkgs/archive/$ver.tar.gz"
 [emacs-overlay]
 src.git = "https://github.com/nix-community/emacs-overlay"
 fetch.tarball = "https://github.com/nix-community/emacs-overlay/archive/$ver.tar.gz"
+
+[everforest]
+src.git = "https://github.com/theorytoe/everforest-emacs"
+fetch.tarball = "https://github.com/theorytoe/everforest-emacs/archive/$ver.tar.gz"

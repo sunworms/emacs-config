@@ -13,7 +13,7 @@ let
     ];
   };
 
-  emacs-with-packages = (pkgs.callPackage ./package.nix {}).default;
+  emacs-with-packages = (pkgs.callPackage ./package.nix {inherit inputs;}).default;
 
   compiledConfig =
     pkgs.runCommand "emacs-config"

@@ -8,12 +8,21 @@
 {
   emacs-overlay = {
     pname = "emacs-overlay";
-    version = "4b849481911296c843cf1e958dc0c99bfa112bf0";
+    version = "fb0d6e46ad922999f91de177f80e60c2765ccb1c";
     src = fetchTarball {
-      url = "https://github.com/nix-community/emacs-overlay/archive/4b849481911296c843cf1e958dc0c99bfa112bf0.tar.gz";
-      sha256 = "sha256-kwF+AEtqMdvxjDe3mmXcgto8078KxBPfw3zgs7rYaRY=";
+      url = "https://github.com/nix-community/emacs-overlay/archive/fb0d6e46ad922999f91de177f80e60c2765ccb1c.tar.gz";
+      sha256 = "sha256-RD/Yw726NrHSjA4XYWXN+FjQ8MiAGMxADrZcgtGULt4=";
     };
     date = "2026-09-25";
+  };
+  everforest = {
+    pname = "everforest";
+    version = "ba61a881b5d57810eef76baae01c951d1e6c2ceb";
+    src = fetchTarball {
+      url = "https://github.com/theorytoe/everforest-emacs/archive/ba61a881b5d57810eef76baae01c951d1e6c2ceb.tar.gz";
+      sha256 = "sha256-p8D27i5EZp37QVi9IffJqXnnFxUaaAc9BfzIzrje66U=";
+    };
+    date = "2025-08-30";
   };
   nixpkgs = {
     pname = "nixpkgs";

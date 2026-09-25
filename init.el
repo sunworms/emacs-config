@@ -56,27 +56,14 @@
 (add-hook 'after-init-hook #'column-number-mode)
 
 ;; Themes
-(dolist (dir '("~/.config/emacs/themes/" "~/.emacs.d/themes/"))
-  (let ((dir (expand-file-name dir)))
-    (when (file-directory-p dir)
-      (add-to-list 'custom-theme-load-path dir))))
-
-(condition-case nil
-    (load-theme 'noctalia t)
-  (error (load-theme 'modus-vivendi t)))
-
-(defun reload-noctalia-theme ()
-  "Reload the Noctalia generated theme."
-  (interactive)
-  (disable-theme 'noctalia)
-  (load-theme 'noctalia t))
-
-(defun handle-sigusr1-theme-reload ()
-  (interactive)
-  (reload-noctalia-theme)
-  (message "Noctalia theme reloaded"))
-
-(define-key special-event-map [sigusr1] #'handle-sigusr1-theme-reload)
+(use-package everforest
+  :ensure nil
+  :no-require t
+  :init
+  (add-to-list 'custom-theme-load-path
+               (file-name-directory (locate-library "everforest-hard-dark-theme")))
+  :config
+  (load-theme 'everforest-hard-dark t))
 
 (use-package gcmh
   :ensure nil
