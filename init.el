@@ -13,21 +13,22 @@
 
 ;; Clipboard
 (defun my/wl-copy (text &optional _push)
-  (let ((proc (make-process
-               :name "wl-copy"
-               :command '("wl-copy" "-n")
-               :connection-type 'pipe
-               :noquery t)))
-    (process-send-string proc text)
-    (process-send-eof proc)))
+  "Copy text using wl-copy if running under Wayland."
+  (when (getenv "WAYLAND_DISPLAY")
+    (let ((proc (make-process
+                 :name "wl-copy"
+                 :command '("wl-copy" "-n")
+                 :connection-type 'pipe
+                 :noquery t)))
+      (process-send-string proc text)
+      (process-send-eof proc))))
 
 (defun my/wl-paste ()
-  (let ((output (shell-command-to-string "wl-paste -n 2>/dev/null")))
-    (unless (string-empty-p output)
-      output)))
-
-(setq interprogram-cut-function #'my/wl-copy)
-(setq interprogram-paste-function #'my/wl-paste)
+  "Paste text using wl-paste if running under Wayland."
+  (when (getenv "WAYLAND_DISPLAY")
+    (let ((output (shell-command-to-string "wl-paste -n 2>/dev/null")))
+      (unless (string-empty-p output)
+        output))))
 
 ;; General toggles
 (setq-default tab-width 2)
