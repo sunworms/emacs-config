@@ -1,4 +1,4 @@
-let
+{initialPkgs ? null}: let
   inputs = import ./_sources/generated.nix {
     fetchurl = null;
     fetchgit = null;
@@ -6,12 +6,16 @@ let
     dockerTools = null;
   };
 
-  pkgs = import inputs.nixpkgs.src {
-    config.allowUnfree = true;
-    overlays = [
-      (import inputs.emacs-overlay.src)
-    ];
-  };
+  pkgs =
+    if initialPkgs != null
+    then initialPkgs
+    else
+      import inputs.nixpkgs.src {
+        config.allowUnfree = true;
+        overlays = [
+          (import inputs.emacs-overlay.src)
+        ];
+      };
 
   emacs-with-packages = (pkgs.callPackage ./package.nix {}).default;
 
