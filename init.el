@@ -11,6 +11,29 @@
 
 (setq-default major-mode 'prog-mode)
 
+;; Clipboard
+(defun my/wl-copy (text &optional _push)
+  "Copy text using wl-copy if running under Wayland."
+  (when (getenv "WAYLAND_DISPLAY")
+    (let ((proc (make-process
+                 :name "wl-copy"
+                 :command '("wl-copy" "-n")
+                 :connection-type 'pipe
+                 :noquery t)))
+      (process-send-string proc text)
+      (process-send-eof proc))))
+
+(defun my/wl-paste ()
+  "Paste text using wl-paste if running under Wayland."
+  (when (getenv "WAYLAND_DISPLAY")
+    (let ((output (shell-command-to-string "wl-paste -n 2>/dev/null")))
+      (unless (string-empty-p output)
+        output))))
+
+;; Assign unconditionally during daemon init
+(setq interprogram-cut-function #'my/wl-copy)
+(setq interprogram-paste-function #'my/wl-paste)
+
 ;; General toggles
 (setq-default tab-width 2)
 (electric-pair-mode 1)
@@ -80,8 +103,6 @@
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
-(use-package clipboard
-	:load-path "lisp/")
 (use-package direnv-config
   :load-path "lisp/")
 (use-package company-config
