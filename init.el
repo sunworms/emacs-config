@@ -41,7 +41,7 @@
 (set-face-attribute 'default nil :family "D2KodingLigature Nerd Font Mono" :height 110)
 
 (unless (display-graphic-p)
-  (set-face-attribute 'default nil :background "unspecified-bg")
+  (set-face-attribute 'default nil :background 'unspecified)
   (set-terminal-parameter nil 'background-mode 'dark))
 
 (set-frame-parameter nil 'alpha-background 85) ; For current frame
