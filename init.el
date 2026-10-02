@@ -61,7 +61,7 @@
 (use-package ewal-doom-themes
 	:ensure nil
   :config
-  (load-theme 'ewal-doom-one t))
+  (load-theme 'ewal-doom-vibrant t))
 
 (defun sunny/terminal-transparent (frame)
   (unless (display-graphic-p frame)
