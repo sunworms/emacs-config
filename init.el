@@ -59,7 +59,7 @@
               ewal-built-in-palette "sexy-material"))
 
 (use-package ewal-doom-themes
-  :ensure nil
+	:ensure nil
   :config
   (load-theme 'ewal-doom-one t))
 
@@ -71,7 +71,8 @@
                         frame :background "unspecified-bg")))
 
 (defun sunny/server-setup-frame ()
-  (catppuccin-reload)
+  (load-theme 'ewal-doom-one nil)
+	(load-theme 'ewal-doom-one t)
   (sunny/terminal-transparent (selected-frame)))
 
 (add-hook 'server-after-make-frame-hook #'sunny/server-setup-frame)
@@ -101,19 +102,39 @@
 	:defer t
 	:hook (dired-mode . nerd-icons-dired-mode))
 
-(use-package tree-sitter
+(use-package vterm
   :ensure nil
-  :config
-  (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+  :commands (vterm))
+
+(use-package diff-hl
+  :ensure nil
+  :hook
+  (after-init . global-diff-hl-mode)
+  :custom
+  (diff-hl-update-async t)
+  (diff-hl-global-modes '(not image-mode pdf-view-mode nov-mode)))
+
+(use-package diff-hl-dired
+  :ensure nil
+  :hook (dired-mode . diff-hl-dired-mode))
+
+(use-package diff-hl-flydiff
+	:ensure nil
+	:hook (after-init . diff-hl-flydiff-mode))
+
+(use-package tree-sitter
+	:ensure nil
+	:config
+	(global-tree-sitter-mode)
+	(add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 
 (use-package direnv-config
-  :load-path "lisp/")
+	:load-path "lisp/")
 (use-package company-config
-  :load-path "lisp/")
+	:load-path "lisp/")
 (use-package lsp-config
-  :load-path "lisp/")
+	:load-path "lisp/")
 (use-package apheleia-config
-  :load-path "lisp/")
+	:load-path "lisp/")
 (use-package languages-config
-  :load-path "lisp/")
+	:load-path "lisp/")

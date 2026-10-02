@@ -10,6 +10,7 @@
         ewal
         ewal-doom-themes
         tree-sitter
+        diff-hl
         gcmh
         apheleia
         company
@@ -32,6 +33,7 @@
         nerd-icons
         nerd-icons-dired
         nerd-icons-completion
+        vterm
       ]
   );
 in {
