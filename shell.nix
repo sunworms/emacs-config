@@ -1,16 +1,8 @@
 let
-  inputs = import ./_sources/generated.nix {
-    fetchurl = null;
-    fetchgit = null;
-    fetchFromGitHub = null;
-    dockerTools = null;
-  };
-
-  pkgs = import inputs.nixpkgs.src {
+  inputs = import ./inputs.nix;
+  pkgs = import inputs.nixpkgs {
     config.allowUnfree = true;
-    overlays = [
-      (import inputs.emacs-overlay.src)
-    ];
+    overlays = [(import inputs.emacs-overlay)];
   };
 
   emacs-with-packages = (pkgs.callPackage ./package.nix {}).default;
@@ -40,7 +32,7 @@ let
     '';
   };
 in
-  pkgs.mkShell {
+  pkgs.mkShellNoCC {
     packages = [
       emacs-portable
     ];

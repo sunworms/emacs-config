@@ -6,8 +6,9 @@
   emacs-with-packages = emacsPackagesCustom.withPackages (
     epkgs:
       with epkgs; [
-        catppuccin-theme
         treesitGrammars
+        ewal
+        ewal-doom-themes
         tree-sitter
         gcmh
         apheleia

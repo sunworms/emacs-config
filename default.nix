@@ -1,22 +1,20 @@
-let
-  inputs = import ./_sources/generated.nix {
-    fetchurl = null;
-    fetchgit = null;
-    fetchFromGitHub = null;
-    dockerTools = null;
-  };
+{
+  pkgs ? null,
+  inputs ? import ./inputs.nix,
+}: let
+  finalPkgs =
+    if pkgs != null
+    then pkgs
+    else
+      import inputs.nixpkgs {
+        config.allowUnfree = true;
+        overlays = [(import inputs.emacs-overlay)];
+      };
 
-  pkgs = import inputs.nixpkgs.src {
-    config.allowUnfree = true;
-    overlays = [
-      (import inputs.emacs-overlay.src)
-    ];
-  };
-
-  emacs-with-packages = (pkgs.callPackage ./package.nix {}).default;
+  emacs-with-packages = (finalPkgs.callPackage ./package.nix {}).default;
 
   compiledConfig =
-    pkgs.runCommand "emacs-config"
+    finalPkgs.runCommand "emacs-config"
     {
       nativeBuildInputs = [emacs-with-packages];
     }
@@ -30,7 +28,7 @@ let
       rm early-init.el init.el lisp/*.el
     '';
 in
-  pkgs.symlinkJoin {
+  finalPkgs.symlinkJoin {
     name = "emacs-portable";
     paths = [emacs-with-packages];
     nativeBuildInputs = [pkgs.makeWrapper];

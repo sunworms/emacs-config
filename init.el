@@ -51,29 +51,16 @@
     (display-line-numbers-mode)))
 (add-hook 'after-init-hook #'column-number-mode)
 
-;; Themes
-(require 'catppuccin-theme)
-(load-theme 'catppuccin :no-confirm)
+(use-package ewal
+  :ensure nil
+	:init (setq ewal-use-built-in-always-p nil
+              ewal-use-built-in-on-failure-p t
+              ewal-built-in-palette "sexy-material"))
 
-(defun sunny/terminal-transparent (frame)
-  (unless (display-graphic-p frame)
-    (set-face-background 'default "unspecified-bg" frame)
-    (set-face-attribute 'line-number frame :background "unspecified-bg")
-    (set-face-attribute 'line-number-current-line
-                        frame :background "unspecified-bg")))
-
-(defun sunny/server-setup-frame ()
-  (catppuccin-reload)
-  (sunny/terminal-transparent (selected-frame)))
-
-(add-hook 'server-after-make-frame-hook #'sunny/server-setup-frame)
-
-(unless (daemonp)
-  (add-hook 'window-setup-hook
-            (lambda ()
-              (sunny/terminal-transparent (selected-frame)))))
-
-(add-hook 'after-make-frame-functions #'sunny/terminal-transparent)
+(use-package ewal-doom-themes
+  :ensure nil
+  :config
+  (load-theme 'ewal-doom-one t))
 
 (use-package gcmh
   :ensure nil
