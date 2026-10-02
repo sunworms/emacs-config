@@ -36,7 +36,10 @@
         '(:documentFormattingProvider
 					:documentRangeFormattingProvider
 					:textDocumentSync))
-
+	
+	(setq-default eglot-workspace-configuration
+								'(:nil (:nix (:flake (:autoArchive t)))))
+	
   (add-to-list 'eglot-server-programs '(typst-ts-mode . ("tinymist")))
   (add-to-list 'eglot-server-programs
                '((LaTeX-mode latex-mode tex-mode bibtex-mode yatex-mode) . ("texlab")))
